@@ -50,7 +50,7 @@ public class WebSocketServer {
      */
     @OnClose
     public void onClose() throws IOException {
-        session.close();
+        //session.close();
         //从set中删除
         webSocketSet.remove(this);
         log.info("【websocket消息】连接断开，总数为:"+webSocketSet.size());
@@ -62,9 +62,9 @@ public class WebSocketServer {
      * @param message 客户端发送过来的消息*/
     @OnMessage
     public void onMessage(String message, Session session) {
-        Map map = JSONObject.parseObject(message, Map.class);
+        //Map map = JSONObject.parseObject(message, Map.class);
         //session.setMaxIdleTimeout(10000);
-        log.info("【websocket消息】收到客户端消息:"+message+"    " + map);
+        log.info("【websocket消息】收到客户端消息:"+message+"    ");
 
     }
 

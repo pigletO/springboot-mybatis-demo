@@ -1,4 +1,4 @@
-package com.example12306.demo.conf;
+package com.example12306.demo.controller;
 
 import com.example12306.demo.service.WebSocketServer;
 import lombok.extern.slf4j.Slf4j;

@@ -4,9 +4,17 @@ import com.example12306.demo.dao.TlineMapper;
 import com.example12306.demo.entity.Tline;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.util.function.Predicate;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -14,8 +22,29 @@ class DemoApplicationTests {
     @Autowired
     private TlineMapper tlineMapper;
 
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
+    @Value("${variables:999}")
+    private String variables;
+
+    @Autowired
+    private Environment env;
+
     @Test
-    void contextLoads() {
+    void contextLoads() throws InterruptedException {
+        System.out.println(variables);
+
+        String s = redisTemplate.opsForValue().get("key");
+
+        System.out.println(s);
+
+       /* for (int i=0;i<100;i++) {
+
+            Thread.sleep(2000);
+            String s = StringUtils.isEmpty(env.getProperty("variables")) ? "kong" : env.getProperty("variables");
+            System.out.println(s);
+        }*/
 
         /*Tline tline = new Tline();
 
@@ -25,7 +54,7 @@ class DemoApplicationTests {
             System.out.println(((Tline) obj).getName());
         }*/
 
-        System.out.println(new BigDecimal(10.10).toString().split(".")[1].length());
+       /* System.out.println(new BigDecimal(10.10).toString().split(".")[1].length());
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(new BigDecimal(10.1).toString().split(".")[0]);
         String s = new BigDecimal(10.1).toString().split(".")[1];
@@ -35,7 +64,7 @@ class DemoApplicationTests {
             }
             stringBuilder.append("." + s);
         }
-        System.out.println(stringBuilder.toString());
+        System.out.println(stringBuilder.toString());*/
         //tlineMapper.insert(tline);
 
         //System.out.println("301".equals("30230022000089".substring(0, 3)));
