@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,6 +32,8 @@ public class ControllerException implements ResponseBodyAdvice<Object> {
         return ResponseResult.Ok(o);
     }
 
+    @ExceptionHandler
+    @ResponseBody
     public Object handler(BusinessException e) {
         return new ResponseResult(e.getCode(), e.getMsg(), null);
     }

@@ -16,7 +16,6 @@ import java.util.Objects;
  **/
 @Slf4j
 @RestController
-//@RequestMapping("/login")
 public class LoginController {
 
     /**
@@ -25,7 +24,7 @@ public class LoginController {
      * 在逻辑处理中我们判断BindingResult知否含有错误信息，如果有错误信息，则直接返回错误信息。
      */
     @CrossOrigin
-    @PostMapping(value = "/api/login")
+    @PostMapping(value = "/login")
     @ResponseBody
     public void login(@Valid @RequestBody LoginInfoVo loginInfoVo, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

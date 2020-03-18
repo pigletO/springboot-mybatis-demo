@@ -14,6 +14,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.function.Predicate;
 
 @SpringBootTest
@@ -38,6 +39,9 @@ class DemoApplicationTests {
         String s = redisTemplate.opsForValue().get("key");
 
         System.out.println(s);
+
+
+        tlineMapper.insert(new Tline(5, "k123", new Date(), new Date()));
 
        /* for (int i=0;i<100;i++) {
 
