@@ -2,6 +2,8 @@ package com.example12306.demo.dao;
 
 import com.example12306.demo.entity.Tstation;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: pig1etO
@@ -12,6 +14,8 @@ public interface BaseMapper<T> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(T record);
+
+    List<T> selectAll();
 
     int insertSelective(T record);
 

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  **/
 @Slf4j
 @ControllerAdvice(basePackages = "com.example12306.demo.controller")
-public class ControllerException implements ResponseBodyAdvice<Object> {
+public class ControllerExceptionAdvicer implements ResponseBodyAdvice<Object> {
 
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {

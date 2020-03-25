@@ -17,4 +17,16 @@ public interface SoldTicketService {
      * @return
      */
     Integer preOrder(List<ReserveInfoDTO> reserveInfoDTOS);
+
+
+    public static void main(String[] args) {
+        ReserveInfoDTO reserveInfoDTO = new ReserveInfoDTO("123", 30);
+        StringBuilder sb = new StringBuilder();
+        sb.append("asdf1a2sd1f;");
+        sb.deleteCharAt(sb.length() - 1);
+        System.out.println(sb.toString());
+    }
+
+
+
 }
