@@ -11,10 +11,13 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
 @SpringBootTest
@@ -26,6 +29,9 @@ class DemoApplicationTests {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    @Autowired
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
     @Value("${variables:999}")
     private String variables;
 
@@ -34,7 +40,7 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() throws InterruptedException {
-        System.out.println(variables);
+        /*System.out.println(variables);
 
         String s = redisTemplate.opsForValue().get("key");
 
@@ -42,6 +48,17 @@ class DemoApplicationTests {
 
 
         tlineMapper.insert(new Tline(5, "k123", new Date(), new Date()));
+
+        Map map = new HashMap();*/
+
+        threadPoolTaskExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(1);
+            }
+        });
+
+
 
        /* for (int i=0;i<100;i++) {
 
