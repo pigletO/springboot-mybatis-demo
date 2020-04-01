@@ -2,6 +2,7 @@ package com.example12306.demo;
 
 import com.example12306.demo.dao.TlineMapper;
 import com.example12306.demo.entity.Tline;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,11 +16,13 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
+@Slf4j
 @SpringBootTest
 class DemoApplicationTests {
 
@@ -29,8 +32,6 @@ class DemoApplicationTests {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    @Autowired
-    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     @Value("${variables:999}")
     private String variables;
@@ -40,6 +41,11 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() throws InterruptedException {
+
+        /*tlineMapper.updateNameById(2, "K9999");
+        Tline tline = tlineMapper.findByIdAndName(2, "K9999");
+        log.info(tline.toString());*/
+        log.info(tlineMapper.findByIds(Arrays.asList(1L, 2L)).toString());
         /*System.out.println(variables);
 
         String s = redisTemplate.opsForValue().get("key");
@@ -51,12 +57,6 @@ class DemoApplicationTests {
 
         Map map = new HashMap();*/
 
-        threadPoolTaskExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(1);
-            }
-        });
 
 
 

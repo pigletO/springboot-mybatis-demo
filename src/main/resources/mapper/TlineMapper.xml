@@ -77,11 +77,17 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example12306.demo.entity.Tline" >
+  <update id="updateByPrimaryKey" parameterType="com.example12306.demo.entity.Tline">
     update t_line
     set name = #{name,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       last_modified = #{lastModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findByIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT * FROM t_line WHERE id in
+      <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+        #{id,jdbcType=BIGINT}
+      </foreach>
+  </select>
 </mapper>
