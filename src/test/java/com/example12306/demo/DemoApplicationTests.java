@@ -42,10 +42,13 @@ class DemoApplicationTests {
     @Test
     void contextLoads() throws InterruptedException {
 
+        String s = redisTemplate.opsForValue().get("key");
+        System.out.println(s);
+
         /*tlineMapper.updateNameById(2, "K9999");
         Tline tline = tlineMapper.findByIdAndName(2, "K9999");
         log.info(tline.toString());*/
-        log.info(tlineMapper.findByIds(Arrays.asList(1L, 2L)).toString());
+        /*log.info(tlineMapper.findByIds(Arrays.asList(1L, 2L)).toString());*/
         /*System.out.println(variables);
 
         String s = redisTemplate.opsForValue().get("key");

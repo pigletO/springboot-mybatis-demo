@@ -16,4 +16,16 @@ public class LoginInfoVo {
 
     @NotNull(message="密码不允许为空")
     private String password;
+
+    /**
+     * 验证码唯一标识
+     */
+    @NotNull(message="参数错误")
+    private String captcha;
+
+    /**
+     * 验证码
+     */
+    @NotNull(message="验证码不能为空")
+    private String code;
 }

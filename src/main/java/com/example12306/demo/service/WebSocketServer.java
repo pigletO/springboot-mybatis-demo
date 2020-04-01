@@ -1,6 +1,5 @@
 package com.example12306.demo.service;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -27,10 +26,9 @@ public class WebSocketServer {
     private String token;
 
     private static Map<String, Session> sessionPool = new ConcurrentHashMap<>();
-
-
     /**
-     * 连接建立成功调用的方法*/
+     * 连接建立成功调用的方法
+     */
     @OnOpen
     public void onOpen(@PathParam("token") String token, Session session) {
         this.token = token;
