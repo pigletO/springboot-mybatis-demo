@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example12306.demo.dao.TticketMapper" >
-  <resultMap id="BaseResultMap" type="com.example12306.demo.entity.Tticket" >
+<mapper namespace="com.hxszd.background.dao.TticketMapper" >
+  <resultMap id="BaseResultMap" type="com.hxszd.background.entity.Tticket" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="line_id" property="lineId" jdbcType="INTEGER" />
     <result column="ticket_num" property="ticketNum" jdbcType="INTEGER" />
@@ -22,7 +22,7 @@
     delete from t_ticket
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example12306.demo.entity.Tticket" >
+  <insert id="insert" parameterType="com.hxszd.background.entity.Tticket" >
     insert into t_ticket (id, line_id, ticket_num, 
       left_stock, create_date, last_modified
       )
@@ -30,7 +30,7 @@
       #{leftStock,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{lastModified,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example12306.demo.entity.Tticket" >
+  <insert id="insertSelective" parameterType="com.hxszd.background.entity.Tticket" >
     insert into t_ticket
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example12306.demo.entity.Tticket" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hxszd.background.entity.Tticket" >
     update t_ticket
     <set >
       <if test="lineId != null" >
@@ -94,7 +94,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example12306.demo.entity.Tticket" >
+  <update id="updateByPrimaryKey" parameterType="com.hxszd.background.entity.Tticket" >
     update t_ticket
     set line_id = #{lineId,jdbcType=INTEGER},
       ticket_num = #{ticketNum,jdbcType=INTEGER},

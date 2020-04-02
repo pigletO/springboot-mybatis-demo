@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example12306.demo.dao.TstationMapper" >
-  <resultMap id="BaseResultMap" type="com.example12306.demo.entity.Tstation" >
+<mapper namespace="com.hxszd.background.dao.TstationMapper" >
+  <resultMap id="BaseResultMap" type="com.hxszd.background.entity.Tstation" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="line_id" property="lineId" jdbcType="INTEGER" />
@@ -23,7 +23,7 @@
     delete from t_station
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example12306.demo.entity.Tstation" >
+  <insert id="insert" parameterType="com.hxszd.background.entity.Tstation" >
     insert into t_station (id, name, line_id, 
       line_name, sort, create_date, 
       last_modified)
@@ -31,7 +31,7 @@
       #{lineName,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
       #{lastModified,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example12306.demo.entity.Tstation" >
+  <insert id="insertSelective" parameterType="com.hxszd.background.entity.Tstation" >
     insert into t_station
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example12306.demo.entity.Tstation" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hxszd.background.entity.Tstation" >
     update t_station
     <set >
       <if test="name != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example12306.demo.entity.Tstation" >
+  <update id="updateByPrimaryKey" parameterType="com.hxszd.background.entity.Tstation" >
     update t_station
     set name = #{name,jdbcType=VARCHAR},
       line_id = #{lineId,jdbcType=INTEGER},
