@@ -8,9 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
@@ -19,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @create: 2020-03-11 17:04
  **/
 @Slf4j
-@ControllerAdvice(basePackages = "com.example12306.demo.controller")
+@RestControllerAdvice(basePackages = "com.example12306.demo.controller")
 public class ControllerExceptionAdvicer implements ResponseBodyAdvice<Object> {
 
     @Override
@@ -33,13 +32,11 @@ public class ControllerExceptionAdvicer implements ResponseBodyAdvice<Object> {
     }
 
     @ExceptionHandler
-    @ResponseBody
     public Object handler(BusinessException e) {
         return new ResponseResult(e.getCode(), e.getMsg(), null);
     }
 
     @ExceptionHandler
-    @ResponseBody
     public Object handler(Exception e) {
         return new ResponseResult(500, "服务器异常", e.getMessage());
     }
