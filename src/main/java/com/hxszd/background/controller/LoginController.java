@@ -82,17 +82,18 @@ public class LoginController {
             // 获取验证码
             String verifyCode;
             if ((verifyCode = redisService.getStr(RedisConstants.Captcha + loginInfoVo.getCaptcha())) == null){
-                throw new BusinessException(ExceptionCodeEnum.VERIFY_CODE_TIME_OUT_ERROR);
+                throw new BusinessException(ExceptionCodeEnum.VERIFY_CODE_TIME_OUT_ERROR.getLabel());
             }
             if (!verifyCode.equalsIgnoreCase(loginInfoVo.getCode())){
-                throw new BusinessException(ExceptionCodeEnum.VERIFY_CODE_ERROR);
+                throw new BusinessException(ExceptionCodeEnum.VERIFY_CODE_ERROR.getLabel());
             }
             if (!Objects.equals("dujingsheng", loginInfoVo.getUsername()) && !Objects.equals("111", loginInfoVo.getPassword())) {
-                throw new BusinessException(ExceptionCodeEnum.LOGIN_PARAM_ERROR);
+                throw new BusinessException(ExceptionCodeEnum.LOGIN_PARAM_ERROR.getLabel());
             }
 
         } else {
-            throw new BusinessException(ExceptionCodeEnum.INPUT_PARAMS_ERROR);
+            log.info(bindingResult.getAllErrors().get(0).getDefaultMessage());
+            throw new BusinessException(ExceptionCodeEnum.INPUT_PARAMS_ERROR.getLabel());
         }
     }
 
