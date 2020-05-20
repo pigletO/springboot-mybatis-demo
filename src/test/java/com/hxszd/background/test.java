@@ -1,8 +1,9 @@
 package com.hxszd.background;
 
-import com.hxszd.background.pojo.dto.UnderWayOrder;
-
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * @description:
@@ -61,10 +62,42 @@ public class test {
 //        D. 编译出错
 
 
-        UnderWayOrder order = new UnderWayOrder();
+       /* UnderWayOrder order = new UnderWayOrder();
         order.mothod(new Integer(1));
 
 
-        String a = null;
+        String a = null;*/
+
+        InputStream inputStream = null;
+        ServerSocket server = null;
+        Socket socket = null;
+
+       try {
+           // 监听指定的端口
+           int port = 55533;
+           server = new ServerSocket(port);
+
+           while (true) {
+
+               // server将一直等待连接的到来
+               System.out.println("server将一直等待连接的到来");
+               socket = server.accept();
+               // 建立好连接后，从socket中获取输入流，并建立缓冲区进行读取
+               inputStream = socket.getInputStream();
+               byte[] bytes = new byte[1024];
+               int len;
+               StringBuilder sb = new StringBuilder();
+               while ((len = inputStream.read(bytes)) != -1) {
+                   //注意指定编码格式，发送方和接收方一定要统一，建议使用UTF-8
+                   sb.append(new String(bytes, 0, len, "UTF-8"));
+               }
+               System.out.println("get message from client: " + sb);
+           }
+       }finally {
+           inputStream.close();
+           socket.close();
+           server.close();
+       }
+
     }
 }

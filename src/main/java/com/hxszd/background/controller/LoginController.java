@@ -1,6 +1,6 @@
 package com.hxszd.background.controller;
 
-import com.hxszd.background.dao.TlineMapper;
+import com.hxszd.background.mapper.TlineMapper;
 import com.hxszd.background.entity.Tline;
 import com.hxszd.background.pojo.constant.RedisConstants;
 import com.hxszd.background.pojo.dto.common.VerifyCodeDTO;
@@ -99,12 +99,7 @@ public class LoginController {
 
     @GetMapping("/get/{id}")
     public Tline getDate(@PathVariable("id") Integer id){
-        return tlineMapper.selectByPrimaryKey(id);
-    }
-
-    @GetMapping("/getAll")
-    public List<Tline> getDate(){
-        return tlineMapper.selectAll();
+        return tlineMapper.selectById(id);
     }
 
 }

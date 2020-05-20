@@ -1,11 +1,10 @@
-package com.hxszd.background.dao;
+package com.hxszd.background.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hxszd.background.entity.Tline;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-
-import java.util.List;
 
 public interface TlineMapper extends BaseMapper<Tline> {
 

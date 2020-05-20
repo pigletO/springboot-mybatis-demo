@@ -1,6 +1,6 @@
 package com.hxszd.background.service.impl;
 
-import com.hxszd.background.dao.TticketMapper;
+import com.hxszd.background.mapper.TticketMapper;
 import com.hxszd.background.pojo.dto.ReserveInfoDTO;
 import com.hxszd.background.service.SoldTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.List;
 
 /**

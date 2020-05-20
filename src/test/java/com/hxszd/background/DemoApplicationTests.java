@@ -1,6 +1,6 @@
 package com.hxszd.background;
 
-import com.hxszd.background.dao.TlineMapper;
+import com.hxszd.background.mapper.TlineMapper;
 import com.hxszd.background.service.common.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
