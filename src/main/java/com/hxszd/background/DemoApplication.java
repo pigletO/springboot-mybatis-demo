@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Mybatis的Mapper.java路径
  */
-@MapperScan(basePackages = "com.hxszd.background.dao")
+@MapperScan(basePackages = "com.hxszd.background.mapper")
 @SpringBootApplication
 public class DemoApplication {
 

@@ -24,7 +24,7 @@ public class LogAspect {
 
     private long startTime;
 
-    @Pointcut("execution(public * com.example12306.demo.controller..*.*(..))")
+    @Pointcut("execution(public * com.hxszd.background.controller..*.*(..))")
     public void Aspect(){}
 
     @Before("Aspect()")

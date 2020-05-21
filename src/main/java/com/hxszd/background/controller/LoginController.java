@@ -1,9 +1,11 @@
 package com.hxszd.background.controller;
 
-import com.hxszd.background.dao.TlineMapper;
-import com.hxszd.background.entity.Tline;
+import com.hxszd.background.entity.TLine;
+import com.hxszd.background.mapper.TLineMapper;
+import com.hxszd.background.pojo.annotation.DbSelector;
 import com.hxszd.background.pojo.constant.RedisConstants;
 import com.hxszd.background.pojo.dto.common.VerifyCodeDTO;
+import com.hxszd.background.pojo.enums.DataSourceEnum;
 import com.hxszd.background.pojo.enums.ExceptionCodeEnum;
 import com.hxszd.background.pojo.exception.BusinessException;
 import com.hxszd.background.pojo.vo.LoginInfoVo;
@@ -20,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -34,7 +35,7 @@ import java.util.UUID;
 public class LoginController {
 
     @Autowired
-    private TlineMapper tlineMapper;
+    private TLineMapper tlineMapper;
 
     @Autowired
     private IRedisService redisService;
@@ -97,14 +98,15 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/get/{id}")
-    public Tline getDate(@PathVariable("id") Integer id){
-        return tlineMapper.selectByPrimaryKey(id);
+    @GetMapping("/masterGet/{id}")
+    public TLine masterGet(@PathVariable("id") Integer id){
+        return tlineMapper.findByid(id);
     }
 
-    @GetMapping("/getAll")
-    public List<Tline> getDate(){
-        return tlineMapper.selectAll();
+    @DbSelector(DataSourceEnum.SLAVER)
+    @GetMapping("/slaverGet/{id}")
+    public TLine slaverGet(@PathVariable("id") Integer id){
+        return tlineMapper.findByid(id);
     }
 
 }

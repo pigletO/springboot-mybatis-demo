@@ -1,93 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hxszd.background.dao.TlineMapper" >
-  <resultMap id="BaseResultMap" type="com.hxszd.background.entity.Tline" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="last_modified" property="lastModified" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, create_date, last_modified
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_line
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
-    select
-    <include refid="Base_Column_List" />
-    from t_line
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_line
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hxszd.background.entity.Tline" >
-    insert into t_line (id, name, create_date, 
-      last_modified)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{lastModified,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.hxszd.background.entity.Tline" >
-    insert into t_line
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxszd.background.mapper.TLineMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hxszd.background.entity.TLine">
+    <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="create_date" property="createDate" />
+        <result column="last_modified" property="lastModified" />
+        <result column="abc" property="abc" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
         id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="lastModified != null" >
-        last_modified,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModified != null" >
-        #{lastModified,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hxszd.background.entity.Tline" >
-    update t_line
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModified != null" >
-        last_modified = #{lastModified,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hxszd.background.entity.Tline">
-    update t_line
-    set name = #{name,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      last_modified = #{lastModified,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="findByIds" parameterType="java.util.List" resultMap="BaseResultMap">
-    SELECT * FROM t_line WHERE id in
-      <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
-        #{id,jdbcType=BIGINT}
-      </foreach>
-  </select>
+        name, create_date, last_modified, abc
+    </sql>
+
 </mapper>

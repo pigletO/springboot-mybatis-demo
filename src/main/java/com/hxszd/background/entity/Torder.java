@@ -1,75 +1,49 @@
 package com.hxszd.background.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-public class Torder {
-    private Integer id;
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author pig1etO
+ * @since 2020-05-21
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class TOrder implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 订单编号
+     */
     private Integer orderNo;
 
+    /**
+     * 顾客姓名
+     */
     private String customName;
 
+    /**
+     * 联系方式
+     */
     private String customContact;
 
+    /**
+     * 顾客身份证
+     */
     private Integer customId;
 
-    private Date createDate;
+    private LocalDateTime createDate;
 
-    private Date lastModified;
+    private LocalDateTime lastModified;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getOrderNo() {
-        return orderNo;
-    }
-
-    public void setOrderNo(Integer orderNo) {
-        this.orderNo = orderNo;
-    }
-
-    public String getCustomName() {
-        return customName;
-    }
-
-    public void setCustomName(String customName) {
-        this.customName = customName == null ? null : customName.trim();
-    }
-
-    public String getCustomContact() {
-        return customContact;
-    }
-
-    public void setCustomContact(String customContact) {
-        this.customContact = customContact == null ? null : customContact.trim();
-    }
-
-    public Integer getCustomId() {
-        return customId;
-    }
-
-    public void setCustomId(Integer customId) {
-        this.customId = customId;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(Date lastModified) {
-        this.lastModified = lastModified;
-    }
 }

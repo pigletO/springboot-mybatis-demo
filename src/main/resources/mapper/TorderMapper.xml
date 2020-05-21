@@ -1,117 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hxszd.background.dao.TorderMapper" >
-  <resultMap id="BaseResultMap" type="com.hxszd.background.entity.Torder" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="order_no" property="orderNo" jdbcType="INTEGER" />
-    <result column="custom_name" property="customName" jdbcType="VARCHAR" />
-    <result column="custom_contact" property="customContact" jdbcType="VARCHAR" />
-    <result column="custom_id" property="customId" jdbcType="INTEGER" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="last_modified" property="lastModified" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, order_no, custom_name, custom_contact, custom_id, create_date, last_modified
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_order
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_order
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hxszd.background.entity.Torder" >
-    insert into t_order (id, order_no, custom_name, 
-      custom_contact, custom_id, create_date, 
-      last_modified)
-    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=INTEGER}, #{customName,jdbcType=VARCHAR}, 
-      #{customContact,jdbcType=VARCHAR}, #{customId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{lastModified,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.hxszd.background.entity.Torder" >
-    insert into t_order
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxszd.background.mapper.TOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hxszd.background.entity.TOrder">
+    <result column="id" property="id" />
+        <result column="order_no" property="orderNo" />
+        <result column="custom_name" property="customName" />
+        <result column="custom_contact" property="customContact" />
+        <result column="custom_id" property="customId" />
+        <result column="create_date" property="createDate" />
+        <result column="last_modified" property="lastModified" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
         id,
-      </if>
-      <if test="orderNo != null" >
-        order_no,
-      </if>
-      <if test="customName != null" >
-        custom_name,
-      </if>
-      <if test="customContact != null" >
-        custom_contact,
-      </if>
-      <if test="customId != null" >
-        custom_id,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="lastModified != null" >
-        last_modified,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="orderNo != null" >
-        #{orderNo,jdbcType=INTEGER},
-      </if>
-      <if test="customName != null" >
-        #{customName,jdbcType=VARCHAR},
-      </if>
-      <if test="customContact != null" >
-        #{customContact,jdbcType=VARCHAR},
-      </if>
-      <if test="customId != null" >
-        #{customId,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModified != null" >
-        #{lastModified,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hxszd.background.entity.Torder" >
-    update t_order
-    <set >
-      <if test="orderNo != null" >
-        order_no = #{orderNo,jdbcType=INTEGER},
-      </if>
-      <if test="customName != null" >
-        custom_name = #{customName,jdbcType=VARCHAR},
-      </if>
-      <if test="customContact != null" >
-        custom_contact = #{customContact,jdbcType=VARCHAR},
-      </if>
-      <if test="customId != null" >
-        custom_id = #{customId,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModified != null" >
-        last_modified = #{lastModified,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hxszd.background.entity.Torder" >
-    update t_order
-    set order_no = #{orderNo,jdbcType=INTEGER},
-      custom_name = #{customName,jdbcType=VARCHAR},
-      custom_contact = #{customContact,jdbcType=VARCHAR},
-      custom_id = #{customId,jdbcType=INTEGER},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      last_modified = #{lastModified,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        order_no, custom_name, custom_contact, custom_id, create_date, last_modified
+    </sql>
+
 </mapper>

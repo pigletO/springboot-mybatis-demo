@@ -1,6 +1,6 @@
 package com.hxszd.background;
 
-import com.hxszd.background.dao.TlineMapper;
+import com.hxszd.background.mapper.TLineMapper;
 import com.hxszd.background.service.common.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ import java.util.List;
 class DemoApplicationTests {
 
     @Autowired
-    private TlineMapper tlineMapper;
+    private TLineMapper tlineMapper;
 
     @Autowired
     private StringRedisTemplate redisTemplate;

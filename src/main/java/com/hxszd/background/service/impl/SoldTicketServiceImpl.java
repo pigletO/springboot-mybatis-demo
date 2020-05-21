@@ -1,14 +1,15 @@
 package com.hxszd.background.service.impl;
 
-import com.hxszd.background.dao.TticketMapper;
+import com.hxszd.background.mapper.TTicketMapper;
 import com.hxszd.background.pojo.dto.ReserveInfoDTO;
 import com.hxszd.background.service.SoldTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
-import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,10 +21,10 @@ import java.util.List;
 public class SoldTicketServiceImpl implements SoldTicketService {
 
     @Autowired
-    private TticketMapper ticketMapper;
+    private TTicketMapper ticketMapper;
 
-    @Autowired
-    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+//    @Autowired
+//    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     static int MAXIMUM_CAPACITY = 1 << 30;
 

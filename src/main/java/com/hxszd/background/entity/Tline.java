@@ -1,20 +1,36 @@
 package com.hxszd.background.entity;
 
-import lombok.AllArgsConstructor;
+import java.time.LocalDateTime;
+import java.io.Serializable;
 import lombok.Data;
-import lombok.ToString;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
-
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author pig1etO
+ * @since 2020-05-21
+ */
 @Data
-@ToString(callSuper = true)
-@AllArgsConstructor
-public class Tline {
-    private Integer id;
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class TLine implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 线路名称：k107
+     */
     private String name;
 
-    private Date createDate;
+    private LocalDateTime createDate;
 
-    private Date lastModified;
+    private LocalDateTime lastModified;
+
+    private Integer abc;
+
+
 }

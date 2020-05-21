@@ -1,117 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hxszd.background.dao.TstationMapper" >
-  <resultMap id="BaseResultMap" type="com.hxszd.background.entity.Tstation" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="line_id" property="lineId" jdbcType="INTEGER" />
-    <result column="line_name" property="lineName" jdbcType="VARCHAR" />
-    <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="last_modified" property="lastModified" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, line_id, line_name, sort, create_date, last_modified
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_station
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_station
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hxszd.background.entity.Tstation" >
-    insert into t_station (id, name, line_id, 
-      line_name, sort, create_date, 
-      last_modified)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{lineId,jdbcType=INTEGER}, 
-      #{lineName,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{lastModified,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.hxszd.background.entity.Tstation" >
-    insert into t_station
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxszd.background.mapper.TStationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hxszd.background.entity.TStation">
+    <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="line_id" property="lineId" />
+        <result column="line_name" property="lineName" />
+        <result column="sort" property="sort" />
+        <result column="create_date" property="createDate" />
+        <result column="last_modified" property="lastModified" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
         id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="lineId != null" >
-        line_id,
-      </if>
-      <if test="lineName != null" >
-        line_name,
-      </if>
-      <if test="sort != null" >
-        sort,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="lastModified != null" >
-        last_modified,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="lineId != null" >
-        #{lineId,jdbcType=INTEGER},
-      </if>
-      <if test="lineName != null" >
-        #{lineName,jdbcType=VARCHAR},
-      </if>
-      <if test="sort != null" >
-        #{sort,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModified != null" >
-        #{lastModified,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hxszd.background.entity.Tstation" >
-    update t_station
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="lineId != null" >
-        line_id = #{lineId,jdbcType=INTEGER},
-      </if>
-      <if test="lineName != null" >
-        line_name = #{lineName,jdbcType=VARCHAR},
-      </if>
-      <if test="sort != null" >
-        sort = #{sort,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModified != null" >
-        last_modified = #{lastModified,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hxszd.background.entity.Tstation" >
-    update t_station
-    set name = #{name,jdbcType=VARCHAR},
-      line_id = #{lineId,jdbcType=INTEGER},
-      line_name = #{lineName,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=INTEGER},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      last_modified = #{lastModified,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        name, line_id, line_name, sort, create_date, last_modified
+    </sql>
+
 </mapper>

@@ -1,21 +1,41 @@
 package com.hxszd.background.entity;
 
+import java.time.LocalDateTime;
+import java.io.Serializable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
-
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author pig1etO
+ * @since 2020-05-21
+ */
 @Data
-public class Tticket {
-    private Integer id;
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class TTicket implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Integer lineId;
 
+    /**
+     * 总库存
+     */
     private Integer ticketNum;
 
+    /**
+     * 剩余库存
+     */
     private Integer leftStock;
 
-    private Date createDate;
+    private LocalDateTime createDate;
 
-    private Date lastModified;
+    private LocalDateTime lastModified;
+
 
 }
