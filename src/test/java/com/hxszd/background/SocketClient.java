@@ -19,7 +19,7 @@ import java.net.SocketAddress;
 public class SocketClient {
 
     public static void main(String args[]) throws Exception {
-        for (int i = 0; i < 10; i++) {
+        //for (int i = 0; i < 10; i++) {
             // 要连接的服务端IP地址和端口
             String host = "127.0.0.1";
             int port = 55533;
@@ -29,9 +29,9 @@ public class SocketClient {
             OutputStream outputStream = socket.getOutputStream();
 
             String message="你好  yiwangzhibujian";
-            socket.getOutputStream().write(JSONObject.toJSONString(ResponseResult.Ok(i)).getBytes("UTF-8"));
+            socket.getOutputStream().write(JSONObject.toJSONString(ResponseResult.Ok(1)).getBytes("UTF-8"));
             outputStream.close();
             socket.close();
-        }
+       // }
     }
 }

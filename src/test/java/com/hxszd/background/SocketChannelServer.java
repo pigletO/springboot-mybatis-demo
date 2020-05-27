@@ -1,6 +1,7 @@
 package com.hxszd.background;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
@@ -25,6 +26,9 @@ public class SocketChannelServer {
 
             // 设置使用非阻塞方式
             serverSocketChannel.configureBlocking(false);
+
+            // 绑定监听端口
+            serverSocketChannel.bind(new InetSocketAddress("127.0.0.1", 55533));
 
             // 获取一个selector选择器对象
             Selector selector = Selector.open();
@@ -75,8 +79,11 @@ public class SocketChannelServer {
 
             try {
                 SocketChannel socketChannel = (SocketChannel)key.channel();
-                socketChannel.read(byteBuffer);
-                byteBuffer.flip();
+                int lenth = socketChannel.read(byteBuffer);
+                if (lenth != -1) {
+                    byteBuffer.flip();
+                    System.out.println(new String(byteBuffer.array(), "UTF-8"));
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
