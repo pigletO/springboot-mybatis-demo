@@ -1,10 +1,9 @@
 package com.hxszd.background.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hxszd.background.entity.TLine;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -12,9 +11,8 @@ import org.springframework.stereotype.Repository;
  * </p>
  *
  * @author pig1etO
- * @since 2020-05-21
+ * @since 2020-05-22
  */
-@Repository
 public interface TLineMapper extends BaseMapper<TLine> {
 
     @Select("SELECT * FROM t_line WHERE id = #{id}")

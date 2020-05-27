@@ -1,7 +1,7 @@
 package com.hxszd.background.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hxszd.background.entity.TStation;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.hxszd.background.entity.TStation;
  * </p>
  *
  * @author pig1etO
- * @since 2020-05-21
+ * @since 2020-05-22
  */
 public interface TStationMapper extends BaseMapper<TStation> {
 
