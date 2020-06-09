@@ -79,10 +79,10 @@ public class LoginServiceImpl implements ILoginService {
     }
 
     @Override
-    @Transactional(rollbackFor = BusinessException.class)
+    @Transactional
     public void delete(Long id) {
 
         tlineMapper.delete(id);
-        throw new BusinessException("123");
+        throw new BusinessException("123456");
     }
 }

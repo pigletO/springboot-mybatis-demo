@@ -81,4 +81,17 @@ public class LoginController {
         loginService.delete(id);
     }
 
+    @DbSelector(DataSourceEnum.SLAVER)
+    @DeleteMapping("/slaverDelete/{id}")
+    public void slaverDelete(@PathVariable("id") Long id){
+        loginService.delete(id);
+    }
+
+    @DbSelector(DataSourceEnum.SLAVER)
+    @PostMapping("/slaver")
+    public void slaverDelete(@RequestParam String a,@RequestParam String b){
+        System.out.println(a);
+        System.out.println(b);
+    }
+
 }
