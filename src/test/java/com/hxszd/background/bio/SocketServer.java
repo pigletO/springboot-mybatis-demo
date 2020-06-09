@@ -1,4 +1,4 @@
-package com.hxszd.background;
+package com.hxszd.background.bio;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hxszd.background.pojo.dto.common.ResponseResult;

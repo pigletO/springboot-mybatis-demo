@@ -1,9 +1,8 @@
 package com.hxszd.background;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @description:
@@ -68,7 +67,7 @@ public class test {
 
         String a = null;*/
 
-        InputStream inputStream = null;
+        /*InputStream inputStream = null;
         ServerSocket server = null;
         Socket socket = null;
 
@@ -97,7 +96,38 @@ public class test {
            inputStream.close();
            socket.close();
            server.close();
-       }
+       }*/
+        /*Calendar calendar = Calendar.getInstance();
+
+        calendar.setTime(new Date());
+        Date d1 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d2 = calendar.getTime();
+        calendar.add(Calendar.DATE, -2);
+        Date d3 = calendar.getTime();
+
+        List<Date> timeList = Arrays.asList(null, d1, d2, d3);
+
+        System.out.println(timeList);
+        List<Date> time = timeList.stream().sorted(new Comparator<Date>() {
+            @Override
+            public int compare(Date o1, Date o2) {
+                if (o1 == null) {
+                    return -1;
+                }
+                if (o2 == null) {
+                    return 1;
+                }
+                return o1.getTime() > o2.getTime() ? 1 : (o1.getTime() == o2.getTime() ? 0 : -1);
+            }
+        }).collect(Collectors.toList());
+
+        System.out.println();
+        System.out.println(time);*/
+
+        System.out.println("-" + 2001 / 100.0);
+
+        System.out.println("-" + (2001 / 100.0));
 
     }
 }

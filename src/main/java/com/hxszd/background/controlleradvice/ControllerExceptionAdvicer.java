@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @create: 2020-03-11 17:04
  **/
 @Slf4j
-@RestControllerAdvice(basePackages = "com.example12306.demo.controller")
+@RestControllerAdvice(basePackages = "com.hxszd.background.controller")
 public class ControllerExceptionAdvicer implements ResponseBodyAdvice<Object> {
 
     @Override

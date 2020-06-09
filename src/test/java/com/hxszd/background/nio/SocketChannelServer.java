@@ -1,9 +1,12 @@
-package com.hxszd.background;
+package com.hxszd.background.nio;
 
 import java.io.IOException;
-import java.net.ServerSocket;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -22,6 +25,8 @@ public class SocketChannelServer {
         try {
             // 开启NIO
             serverSocketChannel = ServerSocketChannel.open();
+
+            serverSocketChannel.bind(new InetSocketAddress("127.0.0.1", 55533));
 
             // 设置使用非阻塞方式
             serverSocketChannel.configureBlocking(false);
@@ -46,6 +51,12 @@ public class SocketChannelServer {
                     it.remove();
                     handler(key);
                 }
+
+                /*try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
 
             }
 
@@ -77,6 +88,7 @@ public class SocketChannelServer {
                 SocketChannel socketChannel = (SocketChannel)key.channel();
                 socketChannel.read(byteBuffer);
                 byteBuffer.flip();
+                System.out.println(new String(byteBuffer.array(), "UTF-8"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

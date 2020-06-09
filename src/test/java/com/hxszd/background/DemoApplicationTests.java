@@ -1,6 +1,8 @@
 package com.hxszd.background;
 
+import com.alibaba.fastjson.JSONObject;
 import com.hxszd.background.mapper.TLineMapper;
+import com.hxszd.background.pojo.base.BaseData;
 import com.hxszd.background.service.common.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -92,6 +95,17 @@ class DemoApplicationTests {
         //tlineMapper.insert(tline);
 
         //System.out.println("301".equals("30230022000089".substring(0, 3)));
+    }
+
+    @Test
+    public void test() {
+        /*redisTemplate.opsForValue().set("object", JSONObject.toJSONString(new ArrayList<BaseData>()));
+
+        List baseData = JSONObject.parseArray(redisTemplate.opsForValue().get("object"), BaseData.class);
+
+        System.out.println(baseData.size());*/
+
+
     }
 
 
