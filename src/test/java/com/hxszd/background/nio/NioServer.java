@@ -35,7 +35,7 @@ public class NioServer {
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
             while (true) {
-                // 等待触发accept事件
+                // 等待触发io事件
                 selector.select();
 
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
@@ -83,7 +83,7 @@ public class NioServer {
             try {
                 channel.read(byteBuffer);
                 byteBuffer.flip();
-                System.out.printf("current io string follow is...");
+                System.out.println(Thread.currentThread().getName() + " current io string follow is...");
                 // 只截取有效位数字符串
                 String str = new java.lang.String(byteBuffer.array(), 0, byteBuffer.limit(), CharsetUtil.UTF_8);
                 System.out.println(str);
