@@ -84,12 +84,18 @@ public class NioServer {
                 channel.read(byteBuffer);
                 byteBuffer.flip();
                 System.out.printf("current io string follow is...");
-                System.out.println(new java.lang.String(byteBuffer.array(), 0, byteBuffer.array().length, CharsetUtil.UTF_8));
+                // 只截取有效位数字符串
+                String str = new java.lang.String(byteBuffer.array(), 0, byteBuffer.limit(), CharsetUtil.UTF_8);
+                System.out.println(str);
 
-                ByteBuffer out = ByteBuffer.wrap("connection will disconnect! see you！".getBytes(CharsetUtil.UTF_8));
+                // TODO 不知道为啥 已经关闭了连接 还是会进isReadable方法 所以暂时使用判断长度来关闭链接
+                if (str.length() == 0) {
+                    key.cancel();
+                }
+                /*ByteBuffer out = ByteBuffer.wrap("connection will disconnect! see you！".getBytes(CharsetUtil.UTF_8));
                 out.flip();
-                channel.write(out);
-                key.cancel();
+                channel.write(out);*/
+                //key.cancel();
             } catch (IOException e) {
                 e.printStackTrace();
                 try {
