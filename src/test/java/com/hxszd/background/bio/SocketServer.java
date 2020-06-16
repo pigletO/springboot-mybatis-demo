@@ -2,6 +2,7 @@ package com.hxszd.background.bio;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hxszd.background.pojo.dto.common.ResponseResult;
+import io.netty.util.CharsetUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,21 +54,23 @@ public class SocketServer {
         try {
             InputStream in = socket.getInputStream();
             byte[] b = new byte[1024];
-            in.read(b);
+            while (true) {
+                if (in.read(b) == -1) {
+                    break;
+                }
+            }
             String s1 = new String(b, "UTF-8");
+            System.out.println(s1);
+
             ResponseResult result = JSONObject.parseObject(s1, ResponseResult.class);
-            System.out.println(result);
+            socket.getOutputStream().write(JSONObject.toJSONString(ResponseResult.Ok()).getBytes(CharsetUtil.UTF_8));
+            socket.shutdownOutput();
+
         } catch (IOException e) {
             try {
                 socket.close();
             } catch (IOException e1) {
                 e1.printStackTrace();
-            }
-        } finally {
-            try {
-                socket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }

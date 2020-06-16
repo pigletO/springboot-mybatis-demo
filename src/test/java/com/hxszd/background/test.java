@@ -125,9 +125,49 @@ public class test {
         System.out.println();
         System.out.println(time);*/
 
-        System.out.println("-" + 2001 / 100.0);
+        /*String s1 = "aaa";
+        String s2 = "bbb" + "ccc";
+        String s3 = s1 + "bbb";
+        //String s1 = "aaa";
+        String s4 = new String("aaa");*/
+        //System.out.println();
 
-        System.out.println("-" + (2001 / 100.0));
+        /*StringBuffer b = new StringBuffer("111");
+        b.append("222");*/
+        /*System.out.println(new StringBuffer().append("111").append("222"));
+        System.out.println(new StringBuilder().append("aaa").append("bbb"));*/
 
+        /*List a = new ArrayList();
+        a.iterator();*/
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10000000; i++) {
+            String x = "第" + i + "条数";
+            list.add(x);
+        }
+        long st1 = System.currentTimeMillis();
+        for (int i = 0; i < list.size(); i++) {
+
+        }
+        long st2 = System.currentTimeMillis();
+        System.out.println("for : " + (st2 - st1));
+        st1 = System.currentTimeMillis();
+        for (String s : list) {
+
+        }
+        st2 = System.currentTimeMillis();
+        System.out.println("for : " + (st2 - st1));
+        st1 = System.currentTimeMillis();
+        list.forEach(item -> {
+
+        });
+        st2 = System.currentTimeMillis();
+        System.out.println("for : " + (st2 - st1));
+        st1 = System.currentTimeMillis();
+        list.stream().forEach(item -> {
+
+        });
+        st2 = System.currentTimeMillis();
+        System.out.println("for : " + (st2 - st1));
     }
 }

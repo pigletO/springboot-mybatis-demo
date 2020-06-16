@@ -6,6 +6,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
 /**
@@ -64,7 +65,7 @@ class Handler extends ChannelInboundHandlerAdapter {
             ByteBuf buf = (ByteBuf) msg;
             // Discard the received data silently.
 
-            String str;
+            /*String str;
             if (buf.hasArray()) { // 处理堆缓冲区
                 str = new String(buf.array(), buf.arrayOffset() + buf.readerIndex(), buf.readableBytes(), "UTF-8");
             } else { // 处理直接缓冲区以及复合缓冲区
@@ -72,10 +73,13 @@ class Handler extends ChannelInboundHandlerAdapter {
                 buf.getBytes(buf.readerIndex(), bytes);
                 str = new String(bytes, 0, buf.readableBytes(), "UTF-8");
             }
-            System.out.println(str);
-        /*ByteBuf out = ctx.alloc().buffer(1024);
-        ctx.write(out.writeBytes("发送消息".getBytes("UTF-8")));
-        ctx.flush();*/
+            System.out.println(str);*/
+
+            if (buf.isReadable()) { // (1)
+                System.out.println(buf.toString(CharsetUtil.UTF_8));
+                /*System.out.print((char) buf.readByte());
+                System.out.flush();*/
+            }
         } finally {
             // Please keep in mind that it is the handler's responsibility to release any reference-counted object passed to the handler.
             ReferenceCountUtil.release(msg);
