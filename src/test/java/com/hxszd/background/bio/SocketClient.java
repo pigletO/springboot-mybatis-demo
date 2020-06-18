@@ -16,34 +16,31 @@ import java.net.Socket;
 public class SocketClient {
 
     public static void main(String args[]) throws Exception {
-        client2();
+        client1();
 
     }
 
-    private static void client1() {
+    private static void handler(int i) {
         Socket socket = null;
         OutputStream outputStream = null;
         try {
-            for (int i = 0; i < 10; i++) {
-                // 要连接的服务端IP地址和端口
-                String host = "127.0.0.1";
-                int port = 55533;
-                // 与服务端建立连接
-                socket = new Socket(host, port);
-                // 建立连接后获得输出流
-                outputStream = socket.getOutputStream();
+            // 要连接的服务端IP地址和端口
+            String host = "127.0.0.1";
+            int port = 55533;
+            // 与服务端建立连接
+            socket = new Socket(host, port);
+            // 建立连接后获得输出流
+            outputStream = socket.getOutputStream();
 
-                String message = "你好  yiwangzhibujian";
-                socket.getOutputStream().write(JSONObject.toJSONString(ResponseResult.Ok(i)).getBytes("UTF-8"));
-                socket.shutdownOutput();
-                byte[] bytes = new byte[1024];
-                InputStream inputStream = socket.getInputStream();
-                while (inputStream.read(bytes) != -1) {
-                }
-                System.out.println(new java.lang.String(bytes, "UTF-8"));
-                socket.shutdownInput();
+            String message = "你好  yiwangzhibujian";
+            socket.getOutputStream().write(JSONObject.toJSONString(ResponseResult.Ok(i)).getBytes("UTF-8"));
+            socket.shutdownOutput();
+            byte[] bytes = new byte[1024];
+            InputStream inputStream = socket.getInputStream();
+            while (inputStream.read(bytes) != -1) {
             }
-
+            System.out.println(new java.lang.String(bytes, "UTF-8"));
+            socket.shutdownInput();
         } catch (Exception e) {
 
         } finally {
@@ -53,6 +50,18 @@ public class SocketClient {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static void client1() {
+        for (int i = 0; i < 10; i++) {
+            int i1 = i;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    handler(i1);
+                }
+            }).start();
         }
     }
 

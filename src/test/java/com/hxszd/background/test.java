@@ -1,6 +1,10 @@
 package com.hxszd.background;
 
 import java.io.IOException;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -140,7 +144,7 @@ public class test {
         /*List a = new ArrayList();
         a.iterator();*/
 
-        List<String> list = new ArrayList<>();
+        /*List<String> list = new ArrayList<>();
         for (int i = 0; i < 10000000; i++) {
             String x = "第" + i + "条数";
             list.add(x);
@@ -168,6 +172,20 @@ public class test {
 
         });
         st2 = System.currentTimeMillis();
-        System.out.println("for : " + (st2 - st1));
+        System.out.println("for : " + (st2 - st1));*/
+
+        // System.out.println(LocalDate.now().plus(1, ChronoUnit.HOURS));
+        /*System.out.println(LocalDate.now());
+        System.out.println(LocalTime.now().plus(2, ChronoUnit.HOURS));
+        System.out.println(YearMonth.from(LocalDate.now()));
+        System.out.println(MonthDay.from(LocalDate.now()));
+        //System.out.println(MonthDay.from(LocalDateTime.now().getLong(Instant.)));
+
+        //System.out.println(Date.from(Instant.from(LocalDate.now())));
+        System.out.println(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());*/
+
+        System.out.println(3 << 2);
+
+
     }
 }
