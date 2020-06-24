@@ -187,5 +187,18 @@ public class test {
         System.out.println(3 << 2);
 
 
+        LocalDateTime time = LocalDateTime.now();
+        LocalDateTime midday = LocalDateTime.of(LocalDate.now(), LocalTime.of(11, 0));
+
+        System.out.println(midday);
+        if (time.compareTo(midday) == -1) {
+            System.out.println(time);
+        } else {
+            System.out.println(time.plusDays(1));
+        }
+
+
+
+
     }
 }

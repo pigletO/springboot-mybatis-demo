@@ -1,4 +1,4 @@
-package com.hxszd.background;
+package com.hxszd.background.chatroom2;
 
 import io.netty.util.CharsetUtil;
 
@@ -88,7 +88,7 @@ public class ChatRoomServer {
             // 获取SocketChannel
             SocketChannel socketChannel = (SocketChannel) key.channel();
 
-            // 设置一个ByteBuffer数组，用以读取数据，数据会按顺序和大小读取到数组中
+            // 设置一个ByteBuffer数组，用以读取数据，数据会按顺序和大小读取到数组中，但需要注意一个中文字符三个字节，若ByteBuffer数组的剩余空间不够，会将中文拆分存储到下一个节点中，会造成数据读取错误，难用
             /*ByteBuffer[] byteBuffers = new ByteBuffer[3];
             byteBuffers[0] = ByteBuffer.allocate(6);
             byteBuffers[1] = ByteBuffer.allocate(3);
@@ -134,8 +134,9 @@ public class ChatRoomServer {
                 // 取消注册
                 key.cancel();
                 try {
+                    System.out.printf("用户@%s下线了!", socketChannel.getRemoteAddress());
+                    System.out.println();
                     socketChannel.close();
-                    System.out.println("异常了:( !");
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
