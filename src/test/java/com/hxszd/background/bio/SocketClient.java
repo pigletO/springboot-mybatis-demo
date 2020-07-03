@@ -39,6 +39,7 @@ public class SocketClient {
             InputStream inputStream = socket.getInputStream();
             while (inputStream.read(bytes) != -1) {
             }
+            while (inputStream.read(bytes) != -1)
             System.out.println(new java.lang.String(bytes, "UTF-8"));
             socket.shutdownInput();
         } catch (Exception e) {

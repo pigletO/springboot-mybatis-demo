@@ -1,6 +1,8 @@
 package com.hxszd.background.service;
 
+import com.hxszd.background.mapper.TLineMapper;
 import com.hxszd.background.pojo.dto.ReserveInfoDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -11,22 +13,14 @@ import java.util.List;
  **/
 public interface SoldTicketService {
 
+
+
     /**
      * 下单
      * @param reserveInfoDTOS
      * @return
      */
     Integer preOrder(List<ReserveInfoDTO> reserveInfoDTOS);
-
-
-    public static void main(String[] args) {
-        ReserveInfoDTO reserveInfoDTO = new ReserveInfoDTO("123", 30);
-        StringBuilder sb = new StringBuilder();
-        sb.append("asdf1a2sd1f;");
-        sb.deleteCharAt(sb.length() - 1);
-        System.out.println(sb.toString());
-    }
-
 
 
 }

@@ -1,8 +1,10 @@
 package com.hxszd.background;
 
 import com.alibaba.fastjson.JSONObject;
+import com.hxszd.background.entity.TLine;
 import com.hxszd.background.mapper.TLineMapper;
 import com.hxszd.background.pojo.base.BaseData;
+import com.hxszd.background.service.SoldTicketService;
 import com.hxszd.background.service.common.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -29,6 +31,9 @@ class DemoApplicationTests {
     @Autowired
     private IRedisService redisService;
 
+    @Autowired
+    private SoldTicketService soldTicketService;
+
 
     @Value("${variables:999}")
     private String variables;
@@ -39,10 +44,17 @@ class DemoApplicationTests {
     @Test
     void contextLoads() throws InterruptedException {
 
-        redisService.saveObj("list", Arrays.asList(1, 2, 3), 30L);
+        /*redisService.saveObj("list", Arrays.asList(1, 2, 3), 30L);
 
         List list = redisService.getObj("list", List.class);
-        System.out.println(list.toString());
+        System.out.println(list.toString());*/
+        /*TLine tLine = new TLine();
+        tLine.setName("123");
+        tLine.setAbc(123);
+        tlineMapper.insert(tLine);*/
+
+        soldTicketService.preOrder(null);
+
 
 
         /*String s = redisTemplate.opsForValue().get("key");

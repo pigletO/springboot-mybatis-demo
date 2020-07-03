@@ -2,10 +2,12 @@ package com.hxszd.background;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -31,7 +33,9 @@ public class Test2 {
 //        System.out.println(start.equals(now));
         LocalDate ri = LocalDate.of(2020, 6, 21);
 
-        System.out.println(now.getDayOfWeek().getValue());
+        System.out.println(ChronoUnit.DAYS.between(ri, now));
+
+        /*System.out.println(now.getDayOfWeek().getValue());
 
         System.out.println(ri);
 
@@ -42,7 +46,12 @@ public class Test2 {
         calendar.setTime(new Date());
         System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
         calendar.add(Calendar.DATE, -2);
-        System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
+        System.out.println(calendar.get(Calendar.DAY_OF_WEEK));*/
 //        System.out.println(nowTime.getHour());
+
+        System.out.println("10139122500003".substring(5,9));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
+        System.out.println(sdf.format(new Date()));
     }
 }

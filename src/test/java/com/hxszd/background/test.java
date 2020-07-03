@@ -184,7 +184,7 @@ public class test {
         //System.out.println(Date.from(Instant.from(LocalDate.now())));
         System.out.println(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());*/
 
-        System.out.println(3 << 2);
+        /*System.out.println(3 << 2);
 
 
         LocalDateTime time = LocalDateTime.now();
@@ -195,7 +195,12 @@ public class test {
             System.out.println(time);
         } else {
             System.out.println(time.plusDays(1));
-        }
+        }*/
+
+                if ( false == true ) {
+                    //these characters are magic: \u000a\u007d\u007b
+                    System.out.println("false is true!");
+                }
 
 
 
