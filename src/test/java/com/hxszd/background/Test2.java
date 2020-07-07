@@ -1,5 +1,6 @@
 package com.hxszd.background;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.SimpleDateFormat;
@@ -8,8 +9,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 /**
  * @description:
@@ -53,5 +53,12 @@ public class Test2 {
 
         SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
         System.out.println(sdf.format(new Date()));
+
+
+        List source = Arrays.asList("1", "2", "3");
+        List target = new ArrayList(source.size());
+        BeanUtils.copyProperties(source, target);
+
+        System.out.println(target);
     }
 }

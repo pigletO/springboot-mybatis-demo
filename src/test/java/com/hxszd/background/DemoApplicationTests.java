@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @SpringBootTest
@@ -53,7 +54,10 @@ class DemoApplicationTests {
         tLine.setAbc(123);
         tlineMapper.insert(tLine);*/
 
-        soldTicketService.preOrder(null);
+        /*soldTicketService.preOrder(null);*/
+
+        redisTemplate.opsForValue().set("timeLimit", "60s", 60, TimeUnit.SECONDS);
+
 
 
 

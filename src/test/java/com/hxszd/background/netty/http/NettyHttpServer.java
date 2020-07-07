@@ -23,6 +23,7 @@ public class NettyHttpServer {
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();
 
+        // 默认启动给的线程数是cpu * 2
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -80,6 +81,7 @@ class ChannelInit extends ChannelInitializer<SocketChannel> {
         System.out.println("客户端连接成功！");
         System.out.println(ch.remoteAddress());
 
+        // netty提供的处理http的编码解码器
         ch.pipeline().addLast("HttpServerCodec", new HttpServerCodec()).addLast(new HttpHandler());
 
     }
