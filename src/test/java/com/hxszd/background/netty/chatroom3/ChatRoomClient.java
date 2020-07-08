@@ -1,14 +1,19 @@
 package com.hxszd.background.netty.chatroom3;
 
+import com.hxszd.background.netty.chatroom3.client.ChannelInBoundHandler;
 import com.hxszd.background.netty.chatroom3.client.ChannelInit;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.CharsetUtil;
 
 import java.net.InetSocketAddress;
+import java.util.Scanner;
 
 /**
  * @description: netty聊天室客户端
@@ -34,6 +39,12 @@ public class ChatRoomClient {
         try {
             // 客户端连接服务器
             ChannelFuture channelFuture = bootstrap.connect(new InetSocketAddress("127.0.0.1", 55533)).sync();
+
+            System.out.println("【客户端】请输入聊天信息");
+            Scanner scanner = new Scanner(System.in);
+            while (scanner.hasNextLine()) {
+                channelFuture.channel().writeAndFlush(scanner.next());
+            }
 
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {

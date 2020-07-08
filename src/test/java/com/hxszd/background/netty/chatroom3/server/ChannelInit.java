@@ -1,7 +1,15 @@
 package com.hxszd.background.netty.chatroom3.server;
 
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.CharsetUtil;
+import io.netty.util.concurrent.EventExecutor;
+import io.netty.util.concurrent.GlobalEventExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,28 +21,17 @@ import java.util.List;
  **/
 public class ChannelInit extends ChannelInitializer<SocketChannel> {
 
-    private static ChannelInit channelInit;
-
-    public static List<SocketChannel> socketChannelList = new ArrayList<>();
-
-    private ChannelInit() {
-
-    }
-
-    public static ChannelInit getInstance() {
-        if (channelInit == null) {
-            channelInit = new ChannelInit();
-        }
-        return channelInit;
-    }
-
+    /**
+     * 每一个客户端连接进来之后，都会有一个自己的channel pipeline
+     * @param ch
+     * @throws Exception
+     */
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
 
-        System.out.println("【客户端连接】" + ch.remoteAddress() + "上线了");
-        // 储存所有客户端连接
-        socketChannelList.add(ch);
         // pipeline是与channel一一对应的，是一个存储流式处理的管道
-        ch.pipeline().addLast(new ChannelInBoundHandler());
+        ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8))
+                .addLast(new ChannelInBoundHandler())
+                .addLast(new StringEncoder(CharsetUtil.UTF_8));
     }
 }

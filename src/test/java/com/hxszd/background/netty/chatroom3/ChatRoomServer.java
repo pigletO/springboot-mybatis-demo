@@ -34,11 +34,11 @@ public class ChatRoomServer {
                 // 设置worker的channel保持链接
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 // 设置worker处理类
-                .childHandler(ChannelInit.getInstance());
+                .childHandler(new ChannelInit());
 
         try {
             // Server采用异步方式绑定一个指定ip端口号，返回一个future异步对象
-            ChannelFuture channelFuture = serverBootstrap.bind(new InetSocketAddress("127.0.0.1", 55533)).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(new InetSocketAddress("172.16.1.100", 55533)).sync();
 
             // 添加监听器
             channelFuture.addListener(new ChannelFutureListenerCustom());
