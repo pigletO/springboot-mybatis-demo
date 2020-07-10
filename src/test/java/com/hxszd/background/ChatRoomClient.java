@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 /**
- * @description: 聊天室客户端
+ * @description: NIO聊天室客户端
  * @author: pig1etO
  * @create: 2020-06-18 18:48
  **/

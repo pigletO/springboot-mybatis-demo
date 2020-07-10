@@ -1,0 +1,6 @@
+// 引入google的protoBuf用来解决跨语言的数据传输问题，protoBuf定义了自己的协议，以便于双方数据传递。
+// protoBuf是个轻量高效的跨语言数据传输协议，普通的字符传递在转换为二进制流发送时，会变为5倍原字符数据大小，网络负担较大。
+// netty自带的ObjectEncoder和ObjectDecoder可以用来进行对象的转换，底层使用的是java序列化技术，java序列化效率不高，性能较低。
+
+cmd
+protoc.exe --java_out=. xxxx.proto

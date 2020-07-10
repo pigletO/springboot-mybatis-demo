@@ -1,9 +1,11 @@
-package com.hxszd.background.netty.chatroom3;
+package com.hxszd.background.netty.protobuf;
 
-import com.hxszd.background.netty.chatroom3.server.ChannelFutureListenerCustom;
-import com.hxszd.background.netty.chatroom3.server.ChannelInit;
+import com.hxszd.background.netty.protobuf.server.ChannelFutureListenerCustom;
+import com.hxszd.background.netty.protobuf.server.ChannelInit;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 

@@ -1,0 +1,41 @@
+// 编译版本
+syntax = "proto3";
+// 对外的class类名
+option java_outer_classname = "protoBufPOJO";
+option optimize_for = SPEED;
+option java_package = "com.hxszd.background.netty.websocket.proto.pojo";
+
+
+// 在服务端解码时需要指定特定的protoBuf类型，但是实际业务使用场景中又需要传递不同的对象，所以这里定义一个总的对象，
+// 内部包含全部可能引用到的对象，通过DateType的enum去判定当前返回的对象类型，便于服务端根据业务进行接收
+// 使用时需要注意这里的对象后面的参数类似于数组下标，从0开始依次声明
+message summaryMessage {
+
+
+    // 声明一个枚举类用来区分不同的传输数据类型
+    enum DataType{
+        // 这里其实就是下面message ObjectA的引用，表示summaryMessage中包含ObjectA
+        ObjectA = 0;
+        ObjectB = 1;
+    }
+
+    // 将枚举类变为summaryMessage的一个成员变量参数
+    DataType dataType = 1;
+
+    // 指定当前message只会有以下对象中的一个，用以节约网络成本
+    oneof dataBody{
+        ObjectA objectA = 2;
+        ObjectB objectB = 3;
+    }
+}
+
+// 仅仅声明ObjectA对象及其参数
+message ObjectA{
+    int32 userId = 4;
+    string userName = 5;
+}
+
+message ObjectB{
+    int32 userId = 6;
+    string phoneNum = 7;
+}

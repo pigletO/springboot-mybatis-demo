@@ -45,6 +45,9 @@ class DemoApplicationTests {
     @Test
     void contextLoads() throws InterruptedException {
 
+
+
+
         /*redisService.saveObj("list", Arrays.asList(1, 2, 3), 30L);
 
         List list = redisService.getObj("list", List.class);
@@ -56,7 +59,7 @@ class DemoApplicationTests {
 
         /*soldTicketService.preOrder(null);*/
 
-        redisTemplate.opsForValue().set("timeLimit", "60s", 60, TimeUnit.SECONDS);
+        //redisTemplate.opsForValue().set("timeLimit", "60s", 60, TimeUnit.SECONDS);
 
 
 

@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * @description: 聊天室 server端
+ * @description: NIO聊天室 server端
  * @author: pig1etO
  * @create: 2020-06-18 18:06
  **/

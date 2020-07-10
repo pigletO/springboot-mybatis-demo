@@ -19,12 +19,15 @@ public class ChannelInBoundHandler extends ChannelInboundHandlerAdapter {
             switch (idleStateEvent.state()) {
                 case READER_IDLE:
                     System.out.println("触发了读空闲操作");
+                    ctx.channel().writeAndFlush("读空闲");
                     break;
                 case WRITER_IDLE:
                     System.out.println("触发了写空闲操作");
+                    ctx.channel().writeAndFlush("写空闲");
                     break;
                 case ALL_IDLE:
                     System.out.println("触发了读写空闲操作");
+                    ctx.channel().writeAndFlush("读写空闲");
                     break;
                 default:
             }
