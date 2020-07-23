@@ -13,7 +13,7 @@
                 var ws = new WebSocket("ws://127.0.0.1:55533/hello");
                 ws.onopen = function()
                 {
-                    var param = "{\"status\":\"601\"}";
+                    var param = "{\"status\":\"601\",\"token\":\"40549119219b30865e272fae03d69f6251\"}";
                     // Web Socket 已连接上，使用 send() 方法发送数据
                     ws.send(param);
                     alert("数据发送中...");

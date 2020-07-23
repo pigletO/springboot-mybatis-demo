@@ -15,7 +15,7 @@ public class SwalkWebSocketProtocol {
     /**
      * 传递浏览器端token用来校验用户身份和权限控制
      */
-    private String token = "1";
+    private String token;
 
     /**
      * 目前项目中还未有前端主动通过webSocket请求后端数据的内容，设置此字段方便以指定请求url
