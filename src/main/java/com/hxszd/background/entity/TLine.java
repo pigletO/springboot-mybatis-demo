@@ -32,5 +32,9 @@ public class TLine implements Serializable {
 
     private Integer abc;
 
+    public TLine(String name) {
+        this.name = name;
+    }
+
 
 }

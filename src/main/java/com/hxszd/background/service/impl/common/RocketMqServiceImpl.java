@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.spring.annotation.MessageModel;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
  **/
 @Slf4j
 @Service
-@RocketMQMessageListener(topic = "async-topic", consumerGroup = "PushConsumer2")
+@RocketMQMessageListener(topic = "async-topic", consumerGroup = "PushConsumer3", messageModel = MessageModel.CLUSTERING)
 public class RocketMqServiceImpl implements IRocketMqService, RocketMQListener<MessageExt> {
 
     @Autowired
@@ -44,6 +45,16 @@ public class RocketMqServiceImpl implements IRocketMqService, RocketMQListener<M
                 log.info("发送失败！");
             }
         });
+    }
+
+    @Override
+    public void sendOneWayMessage(String topic, String tags, String body) {
+
+        Message message = new Message();
+        message.setTopic(topic);
+        message.setTags(tags);
+        message.setBody(body.getBytes(CharsetUtil.UTF_8));
+        rocketMQTemplate.sendOneWay(topic, message);
     }
 
     @Override

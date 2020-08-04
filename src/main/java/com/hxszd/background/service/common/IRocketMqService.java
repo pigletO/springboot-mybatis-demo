@@ -13,4 +13,12 @@ public interface IRocketMqService {
      * @param body
      */
     void asyncSendMessage(String topic, String tags, String body);
+
+    /**
+     * 推送不关心成功或失败的mq消息
+     * @param topic
+     * @param tags
+     * @param body
+     */
+    void sendOneWayMessage(String topic, String tags, String body);
 }

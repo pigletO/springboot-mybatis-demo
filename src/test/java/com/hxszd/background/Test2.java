@@ -77,7 +77,7 @@ public class Test2 {
 
         System.out.println(s.substring(0, s.indexOf(".")));*/
 
-        List<Integer> arrayList = new ArrayList<>();
+        /*List<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);
         arrayList.add(3);
@@ -93,7 +93,9 @@ public class Test2 {
             }
         }
 
-        System.out.println(arrayList.toString());
+        System.out.println(arrayList.toString());*/
+
+        System.out.println(UUID.randomUUID().toString().replace("-",""));
 
     }
 }

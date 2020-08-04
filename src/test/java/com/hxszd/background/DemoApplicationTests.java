@@ -8,15 +8,15 @@ import com.hxszd.background.service.SoldTicketService;
 import com.hxszd.background.service.common.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -36,8 +36,8 @@ class DemoApplicationTests {
     private SoldTicketService soldTicketService;
 
 
-    @Value("${variables:999}")
-    private String variables;
+    @Value("${variables:false}")
+    private Boolean variables;
 
     @Autowired
     private Environment env;
@@ -45,7 +45,22 @@ class DemoApplicationTests {
     @Test
     void contextLoads() throws InterruptedException {
 
+        System.out.println(variables);
 
+        TLine tLine = new TLine();
+
+
+        /*Map map = new HashMap();
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        map.put("key4", "value4");
+        redisTemplate.opsForHash().put("hashKey","key1", "value");
+
+        redisTemplate.opsForHash().putAll("hashKey", map);
+
+        boolean result = redisTemplate.opsForHash().hasKey("hashKey", "key2");
+
+        System.out.println(result);*/
 
 
         /*redisService.saveObj("list", Arrays.asList(1, 2, 3), 30L);
