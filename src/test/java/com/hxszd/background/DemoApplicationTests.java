@@ -1,45 +1,49 @@
 package com.hxszd.background;
 
-import com.hxszd.background.dao.TlineMapper;
-import com.hxszd.background.service.common.IRedisService;
+//import com.hxszd.background.dao.TlineMapper;
+//import com.hxszd.background.service.common.IRedisService;
+//import lombok.extern.slf4j.Slf4j;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.core.env.Environment;
+//import org.springframework.data.redis.core.StringRedisTemplate;
+//
+//import java.util.Arrays;
+//import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.env.Environment;
-import org.springframework.data.redis.core.StringRedisTemplate;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Slf4j
 @SpringBootTest
 class DemoApplicationTests {
 
-    @Autowired
-    private TlineMapper tlineMapper;
-
-    @Autowired
-    private StringRedisTemplate redisTemplate;
-
-    @Autowired
-    private IRedisService redisService;
-
-
-    @Value("${variables:999}")
-    private String variables;
-
-    @Autowired
-    private Environment env;
+//    @Autowired
+//    private TlineMapper tlineMapper;
+//
+//    @Autowired
+//    private StringRedisTemplate redisTemplate;
+//
+//    @Autowired
+//    private IRedisService redisService;
+//
+//
+//    @Value("${variables:999}")
+//    private String variables;
+//
+//    @Autowired
+//    private Environment env;
 
     @Test
     void contextLoads() throws InterruptedException {
 
-        redisService.saveObj("list", Arrays.asList(1, 2, 3), 30L);
-
-        List list = redisService.getObj("list", List.class);
-        System.out.println(list.toString());
+//        redisService.saveObj("list", Arrays.asList(1, 2, 3), 30L);
+//
+//        List list = redisService.getObj("list", List.class);
+//        System.out.println(list.toString());
 
 
         /*String s = redisTemplate.opsForValue().get("key");

@@ -1,6 +1,5 @@
 package com.hxszd.background;
 
-import com.hxszd.background.pojo.dto.UnderWayOrder;
 
 import java.io.IOException;
 
@@ -61,10 +60,5 @@ public class test {
 //        D. 编译出错
 
 
-        UnderWayOrder order = new UnderWayOrder();
-        order.mothod(new Integer(1));
-
-
-        String a = null;
     }
 }
