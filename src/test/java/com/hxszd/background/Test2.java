@@ -95,7 +95,72 @@ public class Test2 {
 
         System.out.println(arrayList.toString());*/
 
-        System.out.println(UUID.randomUUID().toString().replace("-",""));
+        /*System.out.println(UUID.randomUUID().toString().replace("-",""));
 
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(1597053600*1000L)));
+
+        long start = System.currentTimeMillis();
+        System.out.println(start);
+
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis())));*/
+
+        //String s = "01001000111100110101010";
+
+        String s = "010010";
+
+        System.out.println(s.substring(0, 2));
+
+        String s1 = "01";
+
+        if (s1.split("0").length == s1.split("1").length) {
+            System.out.println(true);
+        }
+
+        System.out.println(question1(s));
+
+
+
+    }
+
+    private static int question1(String s) {
+
+        int index = 0;
+
+        int lenth = s.length();
+
+        String sub;
+
+        boolean theFirstIsZero = false;
+
+        for (int i = 0; i < lenth; i++) {
+            for (int j = 1; j <= lenth / 2; j++) {
+
+                if (i + j * 2 > lenth) {
+                    continue;
+                }
+
+                sub = s.substring(i,i + j * 2);
+                if (i == 0) {
+                    theFirstIsZero = "0".equals(s.substring(i, 1));
+                    if (theFirstIsZero) {
+                        if (sub.split("0").length - 1 == sub.split("1").length) {
+                            index++;
+                        }
+                    } else {
+                        if (sub.split("0").length == sub.split("1").length - 1) {
+                            index++;
+                        }
+                    }
+                    continue;
+                }
+
+                if (sub.split("0").length == sub.split("1").length) {
+                    index++;
+                }
+
+            }
+        }
+
+        return index;
     }
 }

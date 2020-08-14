@@ -1,6 +1,7 @@
 package com.hxszd.background;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
@@ -197,13 +198,28 @@ public class test {
             System.out.println(time.plusDays(1));
         }*/
 
-                if ( false == true ) {
+                /*if ( false == true ) {
                     //these characters are magic: \u000a\u007d\u007b
                     System.out.println("false is true!");
-                }
+                }*/
+
+        List list = Arrays.asList(1, 2, 3);
+        System.out.println(list.subList(0, 1));
+        System.out.println(list.subList(1, 2));
+
+        Collections.reverse(list);
+
+        System.out.println(list);
 
 
+        /*SimpleDateFormat sdf = new SimpleDateFormat("M月dd日 HH:mm");
+        //Date date = new Date(System.currentTimeMillis());
 
+        LocalDateTime localDateTime = LocalDateTime.of(2020, 12, 12, 17, 48, 22);
+        Date date = Date.from(localDateTime.atZone(ZoneId.of("GMT+8")).toInstant());
+
+        System.out.println(sdf.format(date));
+*/
 
     }
 }
