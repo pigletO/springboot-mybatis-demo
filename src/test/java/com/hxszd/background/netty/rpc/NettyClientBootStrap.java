@@ -34,13 +34,13 @@ public class NettyClientBootStrap {
         // 获取RCP接口方法代理对象
         NormalService proxyObject = getProxyBean(NormalService.class);
 
-        String result = proxyObject.methodA("你好 dubbo~");
+        /*String result = proxyObject.methodA("你好 dubbo~");
 
-        System.out.println(result);
+        System.out.println(result);*/
 
-        /*for (;; ) {
+        for (int i=0;i<100;i++ ) {
             try {
-                Thread.sleep(2 * 1000);
+                Thread.sleep( 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -48,7 +48,6 @@ public class NettyClientBootStrap {
             String res = proxyObject.methodA("你好 dubbo~");
             System.out.println("调用的结果 res= " + res);
         }
-*/
         //startClient();
 
     }

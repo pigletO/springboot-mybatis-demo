@@ -26,7 +26,6 @@ public class ChannelInBoundHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("【客户端】" + ctx.channel().localAddress());
-        ctx.channel().writeAndFlush("1111111111111111");
         // TODO 客户端怎么做到非阻塞读取消息呢？
     }
 }
