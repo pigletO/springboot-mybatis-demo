@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author pig1etO
- * @since 2020-05-21
+ * @since 2020-08-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,11 +30,7 @@ public class TLine implements Serializable {
 
     private LocalDateTime lastModified;
 
-    private Integer abc;
-
-    /*public TLine(String name) {
-        this.name = name;
-    }*/
+    private String abc;
 
 
 }

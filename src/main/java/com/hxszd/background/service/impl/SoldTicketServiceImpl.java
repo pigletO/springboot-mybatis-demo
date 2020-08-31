@@ -41,7 +41,7 @@ public class SoldTicketServiceImpl extends ServiceImpl<TLineMapper, TLine> imple
     public Integer preOrder(List<ReserveInfoDTO> reserveInfoDTOS) {
         TLine tLine = new TLine();
         tLine.setName("123");
-        tLine.setAbc(123);
+        //tLine.setAbc(123);
         baseMapper.insert(tLine);
 
         System.out.println("插入数据");

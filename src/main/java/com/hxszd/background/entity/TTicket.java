@@ -18,10 +18,12 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class TTicket implements Serializable {
+    
+    private Long id;
 
-    private static final long serialVersionUID = 1L;
-
-    private Integer lineId;
+//    private static final long serialVersionUID = 1L;
+//
+//    private Integer lineId;
 
     /**
      * 总库存
@@ -31,11 +33,11 @@ public class TTicket implements Serializable {
     /**
      * 剩余库存
      */
-    private Integer leftStock;
-
-    private LocalDateTime createDate;
-
-    private LocalDateTime lastModified;
+//    private Integer leftStock;
+//
+//    private LocalDateTime createDate;
+//
+//    private LocalDateTime lastModified;
 
 
 }
