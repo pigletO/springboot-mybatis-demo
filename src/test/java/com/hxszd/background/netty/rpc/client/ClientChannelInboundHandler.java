@@ -23,6 +23,7 @@ public class ClientChannelInboundHandler extends SimpleChannelInboundHandler<Str
 
     /**
      * TODO 为啥要加锁 个人理解 多次调用远程接口，但是使用的是同一handlerContext上下文对象 并发时候必须要保证当前notify唤醒的线程是刚刚RPC调用时传入的参数获得的结果
+     *  破案了 因为要调用notify()或者wait()方法需要在Synchronize修饰下调用
      * @param ctx
      * @param msg
      * @throws Exception
@@ -47,7 +48,7 @@ public class ClientChannelInboundHandler extends SimpleChannelInboundHandler<Str
     }
 
     /**
-     * TODO 为啥需要加锁
+     * TODO 为啥需要加锁 因为调用wait()方法必须在要synchronize修饰下进行，wait()是释放当前锁，进入等待
      * @return
      * @throws Exception
      */
