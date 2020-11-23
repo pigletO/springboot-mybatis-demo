@@ -129,6 +129,9 @@ class DemoApplicationTests {
         //tlineMapper.insert(tline);
 
         //System.out.println("301".equals("30230022000089".substring(0, 3)));
+        String str = "[123]jjjj" ;
+        String nStr = str.replace("\\[.*\\]", "");
+        System.out.println(nStr);
     }
 
     @Test

@@ -7,11 +7,17 @@ import java.io.IOException;
 import java.security.spec.AlgorithmParameterSpec;
 import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.chrono.ChronoPeriod;
+import java.time.chrono.Chronology;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
 import java.time.temporal.TemporalUnit;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @description:
@@ -20,6 +26,8 @@ import java.util.stream.Collectors;
  **/
 public class test {
 
+    static int num = 0;
+    static AtomicInteger n = new AtomicInteger(0);
     public static void main(String[] args) throws Exception {
         /*String filePath = "H:\\a.txt";
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath))));
@@ -231,6 +239,108 @@ public class test {
             System.out.println(decrypt(session_key,ivData,encryptedData));*/
 
 
+        /*LocalDateTime localDateTime = LocalDateTime.now();
+
+        LocalDateTime nextMidNight = LocalDateTime.of(localDateTime.toLocalDate().plusDays(1), LocalTime.MIDNIGHT);
+
+        Long count = Duration.between(localDateTime, nextMidNight).toMinutes();
+
+        System.out.println(nextMidNight);
+
+        System.out.println(count);*/
+
+        /*int a = 1000,b=1000;
+        Integer c = 1000,d = 1000;
+
+
+        System.out.println(a==b);
+
+        System.out.println(c==d);*/
+
+
+
+        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDateTime time = LocalDateTime.parse("2020-09-30 05:29:50.000Z", formatter);
+
+        System.out.println(time);*/
+
+        /*LocalDate localDate = LocalDate.of(2020, 10, 6);
+        LocalDate localDate1 = LocalDate.of(2018, 1, 1);
+
+        System.out.println(ChronoUnit.DAYS.between(localDate1, localDate));
+        System.out.println(ChronoUnit.MONTHS.between(localDate1, localDate));
+        Period p = Period.between(localDate1, localDate);
+        System.out.println("years:"+p.getYears()+" months:"+p.getMonths()+" days:"+p.getDays());
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime localDateTime1 = LocalDateTime.of(2020, 10, 1, 0, 0);
+
+        System.out.println(Duration.between(localDateTime1, localDateTime).toMinutes());
+
+        LocalDateTime now = LocalDateTime.now();
+        Date nowDate = Date.from(now.atZone(ZoneId.of("GMT+8")).toInstant());
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(nowDate));
+
+        now = nowDate.toInstant().atZone(ZoneId.of("GMT+8")).toLocalDateTime();
+        System.out.println(now);*/
+
+        /*List<User> userList = new ArrayList<>();
+        userList.add(new User(1L, "aaa"));
+        userList.add(new User(2L, "bbb"));
+        userList.add(new User(3L, "ccc"));
+        userList.add(new User(2L, "ddd"));
+        userList.add(new User(3L, "eee"));
+
+        Map<Long, String> map = userList.stream().collect(Collectors.toMap(User::getId, User::getUserName, (v1, v2) -> v1));
+
+        System.out.println(map);*/
+
+        /*List list = Arrays.asList(-2, 6, -1, 5, 4, -7, 2, 3);
+
+        //Integer[] number = new Integer[]{-2, 6, -1, 5, 4, -7, 2, 3};
+
+        Integer[] number = new Integer[]{-2, 1, 4, -4, 5, 4, -7, 2, 3};
+        int thisnum = 0;
+        int maxnum = 0;
+        for (int i = 0; i < number.length; i++) {
+            thisnum += number[i];
+            if (thisnum > maxnum) {
+                maxnum = thisnum;
+            } else if (thisnum < 0) {
+                thisnum = 0;
+            }
+        }
+
+
+
+        System.out.println(maxnum);*/
+
+        List<Integer> statusAllowList = new ArrayList<>();
+        getAllowList(statusAllowList);
+        System.out.println(statusAllowList);
+
+
+        /*IntStream.range(0, 8000).parallel().forEach(each -> {
+            num++;
+        });
+        System.out.println(num);
+
+        IntStream.range(0, 8000).parallel().forEach(each -> {
+            n.incrementAndGet();
+        });
+        System.out.println(n);*/
+
+        for (int i = 0; ++i < 10;) {
+            System.out.println(i);
+        }
+
+
+    }
+
+    private static void getAllowList(List<Integer> statusAllowList) {
+        statusAllowList.addAll(Arrays.asList(1,2,4,5));
+        statusAllowList.add(3);
 
 
     }
