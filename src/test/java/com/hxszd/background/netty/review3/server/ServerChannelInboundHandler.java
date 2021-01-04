@@ -1,18 +1,23 @@
 package com.hxszd.background.netty.review3.server;
 
+import com.hxszd.background.service.impl.NormalServiceImpl;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-/**
- * @description:
- * @author: pig1etO
- * @create: 2020-11-20 17:01
- **/
 public class ServerChannelInboundHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+        System.out.println(msg);
+        NormalServiceImpl service = new NormalServiceImpl();
+
+        Object result;
+        if (msg instanceof String) {
+            result = service.methodA((String) msg);
+        } else {
+            result = service.methodB((Integer) msg);
+        }
+        ctx.channel().writeAndFlush(result);
     }
 
     @Override
