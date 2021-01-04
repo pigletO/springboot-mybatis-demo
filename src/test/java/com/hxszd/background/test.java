@@ -316,9 +316,9 @@ public class test {
 
         System.out.println(maxnum);*/
 
-        List<Integer> statusAllowList = new ArrayList<>();
-        getAllowList(statusAllowList);
-        System.out.println(statusAllowList);
+//        List<Integer> statusAllowList = new ArrayList<>();
+//        getAllowList(statusAllowList);
+//        System.out.println(statusAllowList);
 
 
         /*IntStream.range(0, 8000).parallel().forEach(each -> {
@@ -331,11 +331,29 @@ public class test {
         });
         System.out.println(n);*/
 
-        for (int i = 0; ++i < 10;) {
-            System.out.println(i);
+//        for (int i = 0; ++i < 10;) {
+//            System.out.println(i);
+//        }
+
+        /*StringBuilder sql = new StringBuilder("SELECT * FROM table");
+
+        StringBuilder newSql = new StringBuilder();
+        for (int i = sql.length() - 1; i >= 0; i--) {
+            newSql.append(sql.charAt(i));
         }
+        System.out.println(newSql.toString());
+*/
 
 
+        boolean result = method(-1);
+
+        System.out.println(result);
+
+
+    }
+
+    public static boolean method(int i) {
+        return i % 2 == 0;
     }
 
     private static void getAllowList(List<Integer> statusAllowList) {

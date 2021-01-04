@@ -30,4 +30,8 @@ public class ChannelOutBoundHandler extends ChannelOutboundHandlerAdapter {
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("OutBoundAdded");
     }
+
+    public static void main(String[] args) {
+        Thread.interrupted();
+    }
 }
