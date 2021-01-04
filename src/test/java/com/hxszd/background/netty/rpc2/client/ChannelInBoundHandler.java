@@ -6,6 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandler;
 import org.junit.platform.commons.util.StringUtils;
 
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 /**
@@ -68,7 +69,7 @@ public class ChannelInBoundHandler implements ChannelInboundHandler, Callable {
         }
         System.out.println("channelRead");
         // 唤醒异步调用方法的线程
-        notify();
+        this.notify();
     }
 
     @Override
@@ -123,7 +124,12 @@ public class ChannelInBoundHandler implements ChannelInboundHandler, Callable {
             channel.writeAndFlush(objectParams);
         }
         // 调用wait方法等待netty异步调用拿到结果之后唤醒此线程
-        wait();
+        this.wait();
+
+        // 方式被误唤醒
+        while (Objects.isNull(result)) {
+            this.wait();
+        }
         return result;
     }
 
