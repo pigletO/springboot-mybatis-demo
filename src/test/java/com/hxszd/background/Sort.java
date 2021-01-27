@@ -1,7 +1,11 @@
 package com.hxszd.background;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.util.CollectionUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -14,7 +18,8 @@ public class Sort {
     public static void main(String[] args) {
 
         List list = null;
-        list = new ArrayList(Arrays.asList(3,44,38,5,47,15,36,26,27,2,46,4,19,50,48));
+//        list = new ArrayList(Arrays.asList(3,44,38,5,47,15,36,26,27,2,46,4,19,50,48));
+//        list = new ArrayList(Arrays.asList(19,50,48));
         /*list = Stream.of(3,44,38,5,47,15,36,26,27,2,46,4,19,50,48).collect(Collectors.toList());
         list = new ArrayList(){{
             add(3);
@@ -28,7 +33,8 @@ public class Sort {
             add("orange");
         }};*/
 
-        int[] array = {3,44,38,5,47,15,36,26,27,2,46,4,19,50,48};
+        Integer[] array = {3,44,38,5,47,15,36,26,27,2,46,4,19,50,48};
+//        Integer[] array = {3,44,38,5,47,15,36,26,27,2};
 
 
         for (int k = 0; k < array.length; k++) {
@@ -43,8 +49,9 @@ public class Sort {
         //selectionSort(array);
 
         // 插入
-        insertionSort(array);
+//        insertionSort(array);
 
+        quickSort(array);
     }
 
     /**
@@ -163,22 +170,52 @@ public class Sort {
 
     /**
      * 快速排序
+     * 核心思想：将数组一分为二，选取一个数值作为基准值（一般情况选中间的就好），遍历一遍数组，将数组中小于基准值的数据放到左侧数组，
+     * 将数组中大于基准值的数据放到右侧数组，再分别递归左侧数组和右侧数组，拼接最后的数据。左侧数组 + 基准值 + 右侧数组。
+     * 注意：需要注意基准值不放到任何一方数组，如果有数跟基准值相同，则放到左右哪个数组都可以
      * @param array
      */
-    public static void quickSort(int[] array) {
+    public static void quickSort(Integer[] array) {
 
-        // 基准值指针
-        Integer point = 0;
+        array = recursion(array).toArray(new Integer[array.length]);
 
-        // 小list最后一位指针
-        Integer subListPoint = 0;
+        for (int k = 0; k < array.length; k++) {
+            System.out.print(array[k] + " ");
+        }
+//        System.out.println(Arrays.toString(rightArray));
+    }
+
+    private static List<Integer> recursion(Integer [] array) {
+        // 已经分割到不能在分割了
+        if (array.length <= 1) {
+            return Arrays.asList(array);
+        }
+
+        // 获取中点
+        int midPoint = array.length / 2;
+        // 中值
+        int pivot = array[midPoint];
+
+        List<Integer> leftArray = new ArrayList<>();
+        List<Integer> rightArray = new ArrayList<>();
+        // 方便看 结果list
+        List<Integer> resultList = new ArrayList<>();
 
         for (int i = 0; i < array.length; i++) {
-            for (int j = point + 1; j < array.length; j++) {
-                if (array[point] > array[j]) {
-
+            if (i != midPoint) {
+                // 把小于中值的数放到leftArray
+                if (array[i] < pivot) {
+                    leftArray.add(array[i]);
+                } else {
+                    rightArray.add(array[i]);
                 }
             }
         }
+
+        resultList.addAll(recursion(leftArray.toArray(new Integer[leftArray.size()])));
+        resultList.add(pivot);
+        resultList.addAll(recursion(rightArray.toArray(new Integer[rightArray.size()])));
+
+        return resultList;
     }
 }
